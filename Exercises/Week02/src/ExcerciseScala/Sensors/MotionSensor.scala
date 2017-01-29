@@ -1,14 +1,17 @@
-package ExcerciseScala
+package ExcerciseScala.Sensors
 
 import java.util.Random
 
-class SmokeSensor(var sensorType: String) extends SensorBattery {
+/**
+  * Created by jakeholdom on 28/01/2017.
+  */
+class MotionSensor(var sensorType: String) extends SecuritySensor {
+
   var location = ""
   var triggered = false
 
-
   def this() {
-    this("Smoke")
+    this("Motion")
   }
 
 
@@ -19,24 +22,20 @@ class SmokeSensor(var sensorType: String) extends SensorBattery {
   def resetTriggered(): Unit = this.triggered = false
 
 
-  override def isTriggered: Boolean = {
-    reduceBattery(this)
+  override def isTriggered:Boolean = {
     val r = new Random()
     if (r.nextInt(100) < 5){
       this.triggered = true
-
+      runNotification(this)
       return this.triggered
     }
 
     this.triggered
   }
 
-  override def checkTriggered: Boolean = this.triggered
-
   override def getLocation = this.location
 
   override def getSensorType = this.sensorType
 
-  override def getBatteryPercentage = battery
-
+  override def checkTriggered: Boolean = this.triggered
 }

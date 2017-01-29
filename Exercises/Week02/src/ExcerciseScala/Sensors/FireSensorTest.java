@@ -1,10 +1,7 @@
-package ExcerciseScala;
+package ExcerciseScala.Sensors;
 
+import ExcerciseScala.Sensors.FireSensor;
 import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.List;
-import scala.collection.mutable.ListBuffer;
 
 import static org.junit.Assert.assertEquals;
 

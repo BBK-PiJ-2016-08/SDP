@@ -1,4 +1,5 @@
-package ExcerciseScala
+package ExcerciseScala.Sensors
+
 
 trait Sensor {
 
@@ -9,6 +10,7 @@ trait Sensor {
   def getSensorType: String
 
   def checkTriggered: Boolean
+
 
 
 }

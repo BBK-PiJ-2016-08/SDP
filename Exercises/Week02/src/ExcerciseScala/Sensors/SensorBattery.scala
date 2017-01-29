@@ -1,4 +1,6 @@
-package ExcerciseScala
+package ExcerciseScala.Sensors
+
+import ExcerciseScala.Notifiers.{FireNotifier, OwnerNotifier, PoliceNotifier}
 
 /**
   * Created by jakeholdom on 28/01/2017.
@@ -6,6 +8,15 @@ package ExcerciseScala
 abstract class SensorBattery extends Sensor{
 
   protected var battery = 100.00
+  var fireNotifier = new FireNotifier
+  var ownerNotifier = new OwnerNotifier
+
+
+  def runNotification(sensor: Sensor): Unit ={
+
+    fireNotifier.notify(sensor)
+    ownerNotifier.notify(sensor)
+  }
 
   def reduceBattery(sensorType : Sensor): Double = {
 

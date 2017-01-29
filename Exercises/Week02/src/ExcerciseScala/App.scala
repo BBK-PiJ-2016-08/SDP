@@ -2,6 +2,10 @@ package ExcerciseScala
 
 import java.io.IOException
 import java.util.Scanner
+
+import ExcerciseScala.ControlUnits.{ControlUnit, SecurityControlUnit}
+import ExcerciseScala.Sensors.{FireSensor, MotionSensor, Sensor, SmokeSensor}
+
 import scala.collection.mutable.ListBuffer
 
 
@@ -12,18 +16,45 @@ object App {
   @throws[IOException]
   def main(args: Array[String]) {
 
-    val controlUnit = new ControlUnit()
-    controlUnit.setSensorList(addBatterySensors())
+    val controlUnit = new ControlUnit(addBatterySensors())
     val scanner = new Scanner(System.in)
     var input = ""
+    val secControlUnit = new SecurityControlUnit(addSecuritySensors())
+    secControlUnit.checkCurrentTime()
     while (input != EXIT) {
       println("Type \"poll\" to poll all sensors once or \"exit\" to exit")
       input = scanner.nextLine
       if (input == POLL) controlUnit.pollSensors()
+      secControlUnit.pollSensors()
     }
+
+
+
   }
 
-  def addBatterySensors(): ListBuffer[SensorBattery] = {
+  def addSecuritySensors(): ListBuffer[Sensor] = {
+
+    val sensor1 = new MotionSensor()
+    val sensor2 = new MotionSensor()
+
+
+    sensor1.setLocation("downstairs")
+    sensor2.setLocation("upstairs")
+
+
+
+    val sensors = ListBuffer[Sensor]()
+
+    sensors += sensor1
+    sensors += sensor2
+
+
+
+    sensors
+
+  }
+
+  def addBatterySensors(): ListBuffer[Sensor] = {
 
     val sensor1 = new FireSensor()
     val sensor2 = new FireSensor()
@@ -36,7 +67,7 @@ object App {
     sensor4.setLocation("Dining Room")
 
 
-    val sensors = ListBuffer[SensorBattery]()
+    val sensors = ListBuffer[Sensor]()
 
     sensors += sensor1
     sensors += sensor2
