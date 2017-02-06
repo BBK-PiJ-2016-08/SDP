@@ -3,21 +3,39 @@ package sml
 /**
   * Created by jakeholdom on 06/02/2017.
   */
-class BnzInstruction(label: String, op: String, val result: Int, val op1: Int, val op2: Int)
+class BnzInstruction(label: String, op: String, val register: Int, val nextLabel: String)
   extends Instruction(label, op) {
 
   override def execute(m: Machine) {
-    val value1 = m.regs(op1)
-    val value2 = m.regs(op2)
-    m.regs(result) = value1 + value2
+
+    if (m.regs(register) != 0) {
+      m.pc = getInstructionNumber(m)
+      m.execute()
+    }
+
   }
 
+  def getInstructionNumber(m: Machine):Int = m.labels.labels.indexOf(nextLabel)
+    /*
+    var count = 0
+
+    if (m.regs(register) != 0){
+      for (labels <- m.labels.labels){
+        count += 1
+        if (labels.equals(nextLabel)){
+          m.pc = count -1
+          m.execute()
+        }
+      }
+    }
+     */
+
   override def toString(): String = {
-    super.toString + " " + op1 + " + " + op2 + " to " + result
+    super.toString + " " + register + " moves to " + nextLabel + "\n"
   }
 }
 
 object BnzInstruction {
-  def apply(label: String, result: Int, op1: Int, op2: Int) =
-    new BnzInstruction(label, "add", result, op1, op2)
+  def apply(label: String, register: Int, nextLabel: String) =
+    new BnzInstruction(label, "add", register, nextLabel)
 }
