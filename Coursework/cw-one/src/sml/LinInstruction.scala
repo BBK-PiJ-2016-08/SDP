@@ -1,16 +1,18 @@
 package sml
 
-case class LinInstruction(label: String, opcode: String, register: Int, value: Int) extends Instruction(label, opcode) {
+import scala.collection.mutable.ArrayBuffer
+
+case class LinInstruction(label: String, opcode: String, array: ArrayBuffer[Any]) extends Instruction(label, opcode) {
 
   override def execute(m: Machine) =
-    m.regs(register) = value
+    m.regs(array(0).toString.toInt) = array(1).toString.toInt
 
   override def toString(): String = {
-    super.toString + " register " + register + " value is " + value + "\n"
+    super.toString + " register " + array(0).toString.toInt + " value is " + array(1).toString.toInt + "\n"
   }
 }
 
 object LinInstruction {
-  def apply(label: String, register: Int, value: Int) =
-    new LinInstruction(label, "lin", register, value)
+  def apply(label: String, array: ArrayBuffer[Any]) =
+    new LinInstruction(label, "lin", array)
 }
