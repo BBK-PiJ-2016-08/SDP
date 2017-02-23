@@ -1,23 +1,25 @@
 package sml
 
+import scala.collection.mutable.ArrayBuffer
+
 /**
   * Created by jakeholdom on 06/02/2017.
   */
-class DivInstruction(label: String, op: String, val result: Int, val op1: Int, val op2: Int)
+class DivInstruction(label: String, op: String, array: ArrayBuffer[Any])
   extends Instruction(label, op) {
 
   override def execute(m: Machine) {
-    val value1 = m.regs(op1)
-    val value2 = m.regs(op2)
-    m.regs(result) = value1 / value2
+    val value1 = m.regs(array(1).toString.toInt)
+    val value2 = m.regs(array(2).toString.toInt)
+    m.regs(array(0).toString.toInt) = value1 / value2
   }
 
   override def toString(): String = {
-    super.toString + " " + op1 + " / " + op2 + " to " + result + "\n"
+    super.toString + " " + array(1).toString.toInt + " / " + array(2).toString.toInt + " to " + array(0).toString.toInt + "\n"
   }
 }
 
 object DivInstruction {
-  def apply(label: String, result: Int, op1: Int, op2: Int) =
-    new DivInstruction(label, "div", result, op1, op2)
+  def apply(label: String, array: ArrayBuffer[Any]) =
+    new AddInstruction(label, "div", array)
 }

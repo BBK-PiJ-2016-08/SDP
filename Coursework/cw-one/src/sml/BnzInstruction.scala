@@ -1,41 +1,29 @@
 package sml
 
+import scala.collection.mutable.ArrayBuffer
+
 /**
   * Created by jakeholdom on 06/02/2017.
   */
-class BnzInstruction(label: String, op: String, val register: Int, val nextLabel: String)
+class BnzInstruction(label: String, op: String, array: ArrayBuffer[Any])
   extends Instruction(label, op) {
 
   override def execute(m: Machine) {
 
-    if (m.regs(register) != 0) {
-      m.pc = getInstructionNumber(m)
+    if (m.regs(array(0).toString.toInt) != 0) {
+      m.pc = m.labels.labels.indexOf(array(1).toString)
       m.execute()
     }
 
   }
 
-  def getInstructionNumber(m: Machine):Int = m.labels.labels.indexOf(nextLabel)
-    /*
-    var count = 0
-
-    if (m.regs(register) != 0){
-      for (labels <- m.labels.labels){
-        count += 1
-        if (labels.equals(nextLabel)){
-          m.pc = count -1
-          m.execute()
-        }
-      }
-    }
-     */
 
   override def toString(): String = {
-    super.toString + " " + register + " moves to " + nextLabel + "\n"
+    super.toString + " " + array(0).toString.toInt + " moves to " + array(1).toString + "\n"
   }
 }
 
 object BnzInstruction {
-  def apply(label: String, register: Int, nextLabel: String) =
-    new BnzInstruction(label, "add", register, nextLabel)
+  def apply(label: String,array: ArrayBuffer[Any]) =
+    new BnzInstruction(label, "add", array)
 }
