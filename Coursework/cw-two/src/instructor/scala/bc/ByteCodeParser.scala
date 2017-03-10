@@ -1,4 +1,6 @@
 package bc
+import scala.io.Source
+
 
 /**
   * [[ByteCodeParser]] parses byte code values.
