@@ -1,13 +1,13 @@
-package factory
-
-import com.sun.org.apache.bcel.internal.generic.InstructionList
+import vendor.{Instruction, ProgramParser}
 
 import scala.io.Source
-import vendor.{Instruction, InvalidInstructionFormatException, ProgramParser}
+
 /**
   * Created by jakeholdom on 09/03/2017.
   */
 class ProgramParserImpl extends ProgramParser{
+  override type InstructionList = Vector[Instruction]
+
   /**
     * Parses a file representation of a bytecode program
     * into an `InstructionList`.
@@ -17,8 +17,9 @@ class ProgramParserImpl extends ProgramParser{
     */
   override def parse(file: String): InstructionList = {
 
+
     val lines = Source.fromFile(file).getLines
-    var instructions = new InstructionList
+    val instructions = new InstructionList
 
     for (line <- lines){
       if (line.nonEmpty){
@@ -33,6 +34,7 @@ class ProgramParserImpl extends ProgramParser{
 
     println(instructions)
     instructions
+
   }
 
   /**
@@ -44,7 +46,7 @@ class ProgramParserImpl extends ProgramParser{
     */
   override def parseString(string: String): InstructionList = {
 
-    var instructions = new InstructionList
+    val instructions = new InstructionList
 
     val fields = string.split(" ")
     if (fields.nonEmpty){
