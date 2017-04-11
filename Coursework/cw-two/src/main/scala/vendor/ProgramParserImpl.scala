@@ -24,12 +24,12 @@ class ProgramParserImpl extends ProgramParser{
 
 
     val lines = Source.fromFile(file).getLines
-    val instructions = instructionList()
+    var instructions = instructionList()
 
     for (line <- lines){
       if (line.nonEmpty){
 
-        instructions :+ parseString(line)
+        instructions = instructions ++: parseString(line)
 
       }else{
         println("Reached end of file")
