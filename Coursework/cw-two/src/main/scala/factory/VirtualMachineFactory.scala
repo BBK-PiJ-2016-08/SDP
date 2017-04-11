@@ -1,6 +1,7 @@
 package factory
 
 import bc.{ByteCodeFactory, ByteCodeParser}
+import sun.tools.asm.Instruction
 import vendor.ProgramParser
 import vm.{VirtualMachine, VirtualMachineParser}
 

@@ -3,6 +3,7 @@ package bc
 import factory.VirtualMachineFactory
 import org.scalatest.FunSuite
 
+
 class PublicByteCodeParserSuite extends FunSuite with ByteCodeValues {
   val bcp = VirtualMachineFactory.byteCodeParser
 

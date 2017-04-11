@@ -1,3 +1,6 @@
+package vendor
+
+import com.sun.org.apache.bcel.internal.generic.InstructionList
 import vendor.{Instruction, ProgramParser}
 
 import scala.io.Source
@@ -7,6 +10,8 @@ import scala.io.Source
   */
 class ProgramParserImpl extends ProgramParser{
   override type InstructionList = Vector[Instruction]
+
+   def instructionList(instruction: Instruction*) = Vector(instruction: _*)
 
   /**
     * Parses a file representation of a bytecode program
@@ -19,7 +24,7 @@ class ProgramParserImpl extends ProgramParser{
 
 
     val lines = Source.fromFile(file).getLines
-    val instructions = new InstructionList
+    val instructions = instructionList()
 
     for (line <- lines){
       if (line.nonEmpty){
@@ -32,7 +37,6 @@ class ProgramParserImpl extends ProgramParser{
       }
     }
 
-    println(instructions)
     instructions
 
   }
@@ -46,14 +50,24 @@ class ProgramParserImpl extends ProgramParser{
     */
   override def parseString(string: String): InstructionList = {
 
-    val instructions = new InstructionList
+    var instructions = instructionList()
 
-    val fields = string.split(" ")
+    val fields = string.split("\n")
     if (fields.nonEmpty){
-
       for (field <- fields){
+        val fieldOne = field
+        var fieldTwo:Vector[Int] = Vector[Int]()
+        if(field.contains(" ")){
+          val multipleInstr = field.split(" ")
+          val fieldOne = multipleInstr(0)
+           fieldTwo = fieldTwo :+ multipleInstr(1).toInt
 
-        instructions :+ field
+
+          instructions = instructions :+ new Instruction(fieldOne, fieldTwo)
+        }else{
+          instructions = instructions :+ new Instruction(fieldOne, fieldTwo)
+
+        }
 
       }
 
