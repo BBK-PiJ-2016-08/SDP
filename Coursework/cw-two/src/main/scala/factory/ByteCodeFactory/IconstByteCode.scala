@@ -20,9 +20,6 @@ class IconstByteCode(val intToAdd : Int) extends ByteCode {
     * @param vm the initial virtual machine
     * @return a new virtual machine
     */
-  override def execute(vm: VirtualMachine): VirtualMachine = {
+  override def execute(vm: VirtualMachine): VirtualMachine = vm.push(intToAdd)
 
-    vm.push(intToAdd)
-
-  }
 }

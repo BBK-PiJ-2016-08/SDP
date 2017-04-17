@@ -20,13 +20,7 @@ class IaddByteCode extends ByteCode{
     * @param vm the initial virtual machine
     * @return a new virtual machine
     */
-  override def execute(vm: VirtualMachine): VirtualMachine = {
+  override def execute(vm: VirtualMachine): VirtualMachine = vm.push(vm.pop()._1 + vm.pop()._1)
 
-    val x = vm.pop()._1
-    val y = vm.pop()._1
-
-    vm.push(x + y)
-
-  }
 }
 

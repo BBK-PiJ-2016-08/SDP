@@ -4,7 +4,7 @@ import factory.VirtualMachineFactory
 import org.scalatest.FunSuite
 
 class PublicByteCodeFactorySuite extends FunSuite with ByteCodeValues {
-  val bcf = VirtualMachineFactory.byteCodeFactory
+  val bcf = new factory.ByteCodeFactoryImpl
 
   test("[5] all bytecodes should be made by factory") {
     // Tests that each bytecode (modulo "iconst") can be made.

@@ -21,9 +21,8 @@ class ByteCodeFactoryImpl extends bc.ByteCodeFactory with bc.ByteCodeValues{
     * @return a new bytecode object
     */
   override def make(byte: Byte, args: Int*): ByteCode = byte match {
-    case _ => throw new bc.InvalidBytecodeException("Error: Unknown byte found")
     case a if bytecode("iadd") == a => new ByteCodeFactory.IaddByteCode
-    case a if bytecode("iconst") == a => new ByteCodeFactory.IconstByteCode
+    case a if bytecode("iconst") == a => new ByteCodeFactory.IconstByteCode(args.head)
     case a if bytecode("idec") == a => new ByteCodeFactory.IdecByteCode
     case a if bytecode("idiv") == a => new ByteCodeFactory.IdivByteCode
     case a if bytecode("idup") == a => new ByteCodeFactory.IdupByteCode
@@ -34,6 +33,6 @@ class ByteCodeFactoryImpl extends bc.ByteCodeFactory with bc.ByteCodeValues{
     case a if bytecode("isub") == a => new ByteCodeFactory.IsubByteCode
     case a if bytecode("iswap") == a => new ByteCodeFactory.IswapByteCode
     case a if bytecode("print") == a => new ByteCodeFactory.PrintByteCode
-
+    case _ => throw new bc.InvalidBytecodeException("Error: Unknown byte found")
   }
 }
