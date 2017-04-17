@@ -2,7 +2,7 @@ package factory
 
 import bc.{ByteCodeFactory, ByteCodeParser}
 import sun.tools.asm.Instruction
-import vendor.ProgramParser
+import vendor.{ProgramParser, ProgramParserImpl}
 import vm.{VirtualMachine, VirtualMachineParser}
 
 /**
@@ -12,10 +12,10 @@ import vm.{VirtualMachine, VirtualMachineParser}
   */
 object VirtualMachineFactory {
   // TODO
-  def byteCodeFactory: ByteCodeFactory = ???
+  def byteCodeFactory: ByteCodeFactory = new ByteCodeFactoryImpl
 
   // TODO
-  def vendorParser: ProgramParser = ???
+  def vendorParser: ProgramParser = new ProgramParserImpl
 
   // TODO
   def byteCodeParser: ByteCodeParser = ???

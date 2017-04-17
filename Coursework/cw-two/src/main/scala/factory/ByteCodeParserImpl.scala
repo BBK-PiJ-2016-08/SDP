@@ -1,3 +1,5 @@
+package factory
+
 import bc.{ByteCode, ByteCodeParser, ByteCodeValues}
 /**
   * Created by jakeholdom on 17/03/2017.
