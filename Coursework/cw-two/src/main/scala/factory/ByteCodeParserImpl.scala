@@ -38,7 +38,6 @@ class ByteCodeParserImpl extends ByteCodeParser{
       }
 
     }
-
     byteCodeVector
   }
 }
