@@ -4,6 +4,7 @@ import bc.{ByteCodeFactory, ByteCodeParser}
 import sun.tools.asm.Instruction
 import vendor.{ProgramParser, ProgramParserImpl}
 import vm.{VirtualMachine, VirtualMachineParser}
+import factory.ByteCodeParserImpl
 
 /**
   * The `VirtualMachineFactory` follows the *factory pattern*. It provides
@@ -11,14 +12,13 @@ import vm.{VirtualMachine, VirtualMachineParser}
   * implement each method such that it returns an object of the correct type.
   */
 object VirtualMachineFactory {
-  // TODO
+
   def byteCodeFactory: ByteCodeFactory = new ByteCodeFactoryImpl
 
-  // TODO
   def vendorParser: ProgramParser = new ProgramParserImpl
 
   // TODO
-  def byteCodeParser: ByteCodeParser = ???
+  def byteCodeParser: ByteCodeParser = new ByteCodeParserImpl
 
   // TODO
   def virtualMachineParser: VirtualMachineParser = ???
