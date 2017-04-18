@@ -1,7 +1,7 @@
 package factory
 
 import bc.{ByteCodeFactory, ByteCodeParser}
-import sun.tools.asm.Instruction
+// import sun.tools.asm.Instruction / Optimized import just to make the sbt test pass
 import vendor.{ProgramParser, ProgramParserImpl}
 import vm.{VirtualMachine, VirtualMachineParser}
 
@@ -18,7 +18,7 @@ object VirtualMachineFactory {
   def vendorParser: ProgramParser = new ProgramParserImpl
 
   // TODO
-  def byteCodeParser: ByteCodeParser = ???
+  def byteCodeParser: ByteCodeParser = new ByteCodeParserImpl
 
   // TODO
   def virtualMachineParser: VirtualMachineParser = ???
