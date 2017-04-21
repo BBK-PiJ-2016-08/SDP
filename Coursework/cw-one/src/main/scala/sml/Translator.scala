@@ -35,6 +35,7 @@ class Translator(fileName: String) {
 
           val actualClass = Class.forName("sml." + field + name)
 
+
           program = program :+ instantiateSMLClass(actualClass)(fields(0),fields(1), fieldArray) // instantiates
           // the class via reflection and adds it to the program object
 

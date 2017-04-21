@@ -30,7 +30,7 @@ case class Machine(labels: Labels, prog: Vector[Instruction]) {
 
 object Machine {
   def main(args: Array[String]) {
-    val smlFile = "/Users/jakeholdom/Programming/Scala/SDP/Coursework/cw-one/src/test1.sml"
+    val smlFile = "/Users/jakeholdom/Programming/Scala/SDP/Coursework/cw-one/src/main/scala/sml/test1.sml"
     if (smlFile.length == 0) {
       println("Machine: args should be sml code file to execute")
     } else {
