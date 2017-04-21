@@ -4,9 +4,8 @@ package main.scala.bridge
   * Created by jakeholdom on 21/04/2017.
   */
 case class GearLocking(s: String) extends Product {
-  // TODO
 
-  override def productName: String = ???
+  override def productName: String = s
 
-  override def produce: Unit = ???
+  override def produce: Unit = println("Producing " + s)
 }
