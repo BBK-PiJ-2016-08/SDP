@@ -33,9 +33,9 @@ class PublicScalaBasicsSuite extends FunSuite {
       }
     }
   }
-
   test("[5] The minWhile function should return the minimum integer in an array using a while loop") {
-    TreeTraversals.getMethod("./Week03/src/main/scala/basics/ScalaBasics.scala", "minWhile") match {
+
+    TreeTraversals.getMethod("/Users/jakeholdom/Programming/Scala/SDP/Exercises/week03/scalabasics/src/main/scala/basics/ScalaBasics.scala", "minWhile") match {
       case Some(method) =>
         assert(TreeTraversals.hasWhileLoop(method), "Your implementation did not include a while loop")
         assert(TreeTraversals.hasIfs(method), "Your implementation did not use an if expression")
@@ -48,7 +48,7 @@ class PublicScalaBasicsSuite extends FunSuite {
   }
 
   test("[5] The minFor function should return the minimum integer in an array using a for loop") {
-    TreeTraversals.getMethod("./Week03/src/main/scala/basics/ScalaBasics.scala", "minFor") match {
+    TreeTraversals.getMethod("/Users/jakeholdom/Programming/Scala/SDP/Exercises/week03/scalabasics/src/main/scala/basics/ScalaBasics.scala", "minFor") match {
       case Some(method) =>
         assert(TreeTraversals.hasForEach(method), "Your implementation did not include a for loop")
         assert(TreeTraversals.doesNotHaveIfs(method), "Your implementation used an if expression")
@@ -61,7 +61,7 @@ class PublicScalaBasicsSuite extends FunSuite {
   }
 
   test("[5] The minRecursive function should return the minimum integer in an array using recursion") {
-    TreeTraversals.getMethod("./Week03/src/main/scala/basics/ScalaBasics.scala", "minRecursive") match {
+    TreeTraversals.getMethod("/Users/jakeholdom/Programming/Scala/SDP/Exercises/week03/scalabasics/src/main/scala/basics/ScalaBasics.scala", "minRecursive") match {
       case Some(method) =>
         assert(!TreeTraversals.hasValDef(method), "Your implementation used a val declaration")
         assert(!TreeTraversals.hasVarDef(method), "Your implementation used a var declaration")
@@ -92,7 +92,7 @@ class PublicScalaBasicsSuite extends FunSuite {
   }
 
   test("[6] isPalindrome should return true if a string is a palindrome") {
-    TreeTraversals.getMethod("./Week03/src/main/scala/basics/ScalaBasics.scala", "isPalindrome") match {
+    TreeTraversals.getMethod("/Users/jakeholdom/Programming/Scala/SDP/Exercises/week03/scalabasics/src/main/scala/basics/ScalaBasics.scala", "isPalindrome") match {
       case Some(method) =>
         assert(!TreeTraversals.hasVarDef(method), "Your implementation used a var declaration")
         assert(TreeTraversals.hasForComp(method), "Your implementation must use a for comprehension")
