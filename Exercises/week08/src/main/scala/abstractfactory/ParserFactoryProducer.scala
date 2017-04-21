@@ -1,20 +1,16 @@
 package main.scala.abstractfactory
+import main.scala.abstractfactory.NYCFactory
+import main.scala.abstractfactory.LondonFactory
 
 /**
   * Created by jakeholdom on 06/03/2017.
   */
-abstract case class ParserFactoryProducer() extends AbstractParserFactory {
+object ParserFactoryProducer{
 
 
-  def getFactory(factory: String): AbstractParserFactory = {
-
-    if (factory.equals("NYCFactory")) {
-
-
-
-    }
-    null
-
+  def getFactory(factory: String): AbstractParserFactory = factory match {
+    case "NYCFactory" => new NYCFactory
+    case "LondonFactory" => new LondonFactory
   }
 
 
