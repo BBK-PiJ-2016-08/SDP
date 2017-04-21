@@ -109,13 +109,10 @@ object ScalaBasics {
     */
   def minRecursive(r: Array[Int]): Int = {
 
-
-
     if(r.length == 1){
       r.head
     } else {
       minRecursive(r.head, minRecursive(r.tail))
-
     }
 
   }
