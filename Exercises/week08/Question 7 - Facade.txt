@@ -1,0 +1,5 @@
+Facade design pattern works as a client to provide a range of different subsystem interfaces
+in a single interface
+
+You would use the facade design pattern when you want a single interface to perform the methods
+provided by many other interfaces at once to produce a single output.
