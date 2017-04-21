@@ -1,0 +1,4 @@
+1a) Strategy design pattern is about having multiple implementations that inherit
+From the same class to give you the ability to select different algorithms
+
+1b) 
