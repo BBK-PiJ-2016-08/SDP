@@ -11,5 +11,8 @@ class FunctionsTestSuite extends FunSuite {
     assert(Counter().inc(5).inc(5).inc(2).dec(4).count.getNumber == 8)
   }
 
+  test("Test adder class") {
+    assert(Counter().inc(5).inc(5).inc(2).dec(4).adjust(adder = new Adder(7)).count.getNumber == 15)
+  }
 
 }

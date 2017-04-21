@@ -19,6 +19,12 @@ case class Counter(var number : Int = 0) {
     decNumber
   }
 
+  def adjust(adder : Adder): Counter ={
+    val decNumber = copy(adder.add(number))
+
+    decNumber
+
+  }
   def count: Counter ={
     this
   }
