@@ -1,0 +1,2 @@
+The bridge pattern is designed to decouple an abstract class from it's implementation so they
+can be slightly different.
