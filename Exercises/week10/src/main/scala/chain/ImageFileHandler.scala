@@ -1,4 +1,4 @@
-package chain
+package main.scala.chain
 
 /**
   * Created by jakeholdom on 22/04/2017.

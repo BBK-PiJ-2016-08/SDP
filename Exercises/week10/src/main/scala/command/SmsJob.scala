@@ -1,4 +1,4 @@
-package command
+package main.scala.command
 
 /**
   * Created by jakeholdom on 22/04/2017.
