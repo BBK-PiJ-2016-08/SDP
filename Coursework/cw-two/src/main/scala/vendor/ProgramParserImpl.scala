@@ -8,10 +8,10 @@ import scala.io.Source
 /**
   * Created by jakeholdom on 09/03/2017.
   */
-class ProgramParserImpl extends ProgramParser{
+class ProgramParserImpl extends ProgramParser {
   override type InstructionList = Vector[Instruction]
 
-   def instructionList(instruction: Instruction*) = Vector(instruction: _*)
+  def instructionList(instruction: Instruction*) = Vector(instruction: _*)
 
   /**
     * Parses a file representation of a bytecode program
@@ -24,20 +24,23 @@ class ProgramParserImpl extends ProgramParser{
 
 
     val lines = Source.fromFile(file).getLines
-    var instructions = instructionList()
+    //creates an iterator of each line in the file given
+    var instructions = instructionList() //instantiates a new vector of instructions
 
-    for (line <- lines){
-      if (line.nonEmpty){
+    for (line <- lines) {
+      //For each line in the iterator
+      if (line.nonEmpty) {
 
+        //appends the instructionList onto the vector of instructions
         instructions = instructions ++: parseString(line)
 
-      }else{
+      } else {
         println("Reached end of file")
 
       }
     }
 
-    instructions
+    instructions //returns instructions
 
   }
 
@@ -52,27 +55,24 @@ class ProgramParserImpl extends ProgramParser{
 
     var instructions = instructionList()
 
-    val fields = string.split("\n")
-    if (fields.nonEmpty){
-      for (field <- fields){
-        val fieldOne = field
-        var fieldTwo:Vector[Int] = Vector[Int]()
-        if(field.contains(" ")){
-          val multipleInstr = field.split(" ")
-          val fieldOne = multipleInstr(0)
-           fieldTwo = fieldTwo :+ multipleInstr(1).toInt
-
-
+    val fields = string.split("\n") //gets the fields from each line if there are more than one
+    //instructions on the string
+    if (fields.nonEmpty) {
+      for (field <- fields) { //for each line of instructions
+        val fieldOne = field //initialises fieldone with the first instruction
+        var fieldTwo: Vector[Int] = Vector[Int]() //initialises field two with an empty int vector
+        if (field.contains(" ")) { //if the instruction contains an int
+          val multipleInstr = field.split(" ")//split the two instructions
+          val fieldOne = multipleInstr(0)//field one will be iconst
+          fieldTwo = fieldTwo :+ multipleInstr(1).toInt //field two will be the int
+          instructions = instructions :+ new Instruction(fieldOne, fieldTwo)// append instruction
+        } else {
           instructions = instructions :+ new Instruction(fieldOne, fieldTwo)
-        }else{
-          instructions = instructions :+ new Instruction(fieldOne, fieldTwo)
-
         }
-
       }
 
     }
 
-    instructions
+    instructions //return instructionList
   }
 }

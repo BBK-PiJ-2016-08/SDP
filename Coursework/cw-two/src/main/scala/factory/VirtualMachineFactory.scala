@@ -13,11 +13,11 @@ import factory.ByteCodeParserImpl
   */
 object VirtualMachineFactory {
 
-  def byteCodeFactory: ByteCodeFactory = new ByteCodeFactoryImpl
+  def byteCodeFactory: ByteCodeFactory = new ByteCodeFactoryImpl //return new instance
 
-  def vendorParser: ProgramParser = new ProgramParserImpl
+  def vendorParser: ProgramParser = new ProgramParserImpl //return new instance
 
-  // TODO
+
   def byteCodeParser: ByteCodeParser = new ByteCodeParserImpl
 
   // TODO

@@ -21,6 +21,9 @@ class ByteCodeFactoryImpl extends bc.ByteCodeFactory with bc.ByteCodeValues{
     * @return a new bytecode object
     */
   override def make(byte: Byte, args: Int*): ByteCode = byte match {
+      //check for each instance of bytecode and initialise a new instance of that class if found
+      //if an iconst is found then parse the int parameter. If an invalid byte is found then throw
+      //an invalidByteCodeException
     case a if bytecode("iadd") == a => new ByteCodeFactory.IaddByteCode
     case a if bytecode("iconst") == a => new ByteCodeFactory.IconstByteCode(args.head)
     case a if bytecode("idec") == a => new ByteCodeFactory.IdecByteCode
