@@ -4,7 +4,7 @@ package main.scala.adapter
   * Created by jakeholdom on 24/04/2017.
   */
 class XpayToPayDAdapter extends PayD{
-  val xpay : XpayImpl = _
+  val xpay : XpayImpl = null
 
   override def getCustCardNo: String = xpay.getCreditCardNo
 
