@@ -1,6 +1,6 @@
-package ExcerciseScala.ControlUnits
+package ControlUnits
 
-import ExcerciseScala.Sensors.Sensor
+import Sensors.Sensor
 
 import scala.collection.mutable.ListBuffer
 

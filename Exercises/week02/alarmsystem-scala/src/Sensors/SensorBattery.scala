@@ -1,6 +1,6 @@
-package ExcerciseScala.Sensors
+package Sensors
 
-import ExcerciseScala.Notifiers.{FireNotifier, OwnerNotifier, PoliceNotifier}
+import Notifiers.{FireNotifier, OwnerNotifier, PoliceNotifier}
 
 /**
   * Created by jakeholdom on 28/01/2017.

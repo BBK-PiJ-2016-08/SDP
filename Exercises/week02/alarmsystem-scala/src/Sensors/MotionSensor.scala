@@ -1,4 +1,4 @@
-package ExcerciseScala.Sensors
+package Sensors
 
 import java.util.Random
 

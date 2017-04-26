@@ -1,10 +1,8 @@
-package ExcerciseScala
-
 import java.io.IOException
 import java.util.Scanner
 
-import ExcerciseScala.ControlUnits.{ControlUnit, SecurityControlUnit}
-import ExcerciseScala.Sensors.{FireSensor, MotionSensor, Sensor, SmokeSensor}
+import ControlUnits.{ControlUnit, SecurityControlUnit}
+import Sensors.{FireSensor, MotionSensor, Sensor, SmokeSensor}
 
 import scala.collection.mutable.ListBuffer
 

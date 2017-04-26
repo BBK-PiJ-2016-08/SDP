@@ -1,4 +1,4 @@
-package ExcerciseScala.Sensors
+package Sensors
 
 
 trait Sensor {

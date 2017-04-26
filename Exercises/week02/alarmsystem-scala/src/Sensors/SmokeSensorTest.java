@@ -1,6 +1,6 @@
-package ExcerciseScala.Sensors;
+package Sensors;
 
-import ExcerciseScala.Sensors.SmokeSensor;
+import Sensors.SmokeSensor;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

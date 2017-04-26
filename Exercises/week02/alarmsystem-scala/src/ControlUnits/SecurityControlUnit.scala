@@ -1,9 +1,9 @@
-package ExcerciseScala.ControlUnits
+package ControlUnits
 
 import java.text.SimpleDateFormat
 import java.util.Calendar
 
-import ExcerciseScala.Sensors.Sensor
+import Sensors.Sensor
 
 import scala.collection.mutable.ListBuffer
 

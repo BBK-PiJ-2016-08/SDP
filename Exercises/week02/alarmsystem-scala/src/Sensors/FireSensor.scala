@@ -1,14 +1,14 @@
-package ExcerciseScala.Sensors
+package Sensors
 
 import java.util.Random
 
-class SmokeSensor(var sensorType: String) extends SensorBattery {
+class FireSensor(var sensorType: String) extends SensorBattery {
   var location = ""
   var triggered = false
 
 
   def this() {
-    this("Smoke")
+    this("Fire")
   }
 
 
@@ -17,6 +17,8 @@ class SmokeSensor(var sensorType: String) extends SensorBattery {
   def setLocation(setLocation : String): Unit = this.location = setLocation
 
   def resetTriggered(): Unit = this.triggered = false
+
+
 
 
   override def isTriggered: Boolean = {

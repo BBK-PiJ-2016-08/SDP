@@ -1,7 +1,7 @@
-package ExcerciseScala.Sensors
+package Sensors
 
-import ExcerciseScala.Notifiers.PoliceNotifier
-import ExcerciseScala.Notifiers.OwnerNotifier
+import Notifiers.PoliceNotifier
+import Notifiers.OwnerNotifier
 
 
 /**
