@@ -3,18 +3,26 @@ package one
 /**
   * Created by jakeholdom on 26/04/2017.
   */
-class Counter(int: Int) {
+case class Counter(int: Int = 0) {
 
   var number : Int = int
 
-  def inc: Counter = {
-    new Counter(number + 1)
+  def inc(int: Int = 1): Counter = {
+    Counter(number + int)
   }
-  def dec: Counter ={
-    new Counter(number - 1)
+  def dec(int: Int = 1): Counter ={
+    Counter(number - int)
   }
   def count : Int = {
 
     number
   }
+
+
+  def adjust(adder: Adder) : Counter = {
+    Counter(adder.add(number))
+  }
+
 }
+
+
