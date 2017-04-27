@@ -1,2 +1,0 @@
-It is appropriate to use the Abstract factory design pattern when you want to encapsulate a group
-of factories that all produce similar objects
