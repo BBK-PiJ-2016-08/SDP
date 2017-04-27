@@ -4,33 +4,31 @@ import org.scalatest.FunSuite
 import sml.Machine
 import sml.AddInstruction
 
+import scala.collection.mutable.ArrayBuffer
+
 /**
   * Created by jakeholdom on 01/03/2017.
   */
 class AddInstructionTest extends FunSuite {
 
-  val add = new AddInstruction()
-  val machine = new Machine(Labels)
-
-  test("[1] make method should create correct bytecode instance") {
-
-    val iconst = bcf.make(bytecode("iconst"), 4)
-    assert(iconst.code == bytecode("iconst"))
-    assert(iconst.isInstanceOf[IconstByteCode])
 
 
-    val iadd = bcf.make(bytecode("iadd"))
-    assert(iadd.code == bytecode("iadd"))
-    assert(iadd.isInstanceOf[IaddByteCode])
+  test("[1] addInstruction should add numbers from the machine regs") {
+    val machine:Machine = new Machine(Labels(), Vector())
 
+    val label = "L1"
+    val opCode = "add"
+    machine.regs(1) = 5
+    machine.regs(2) = 10
+    val array : ArrayBuffer[Any] = new ArrayBuffer[Any]()
 
-    val iswap = bcf.make(bytecode("iswap"))
-    assert(iswap.code == bytecode("iswap"))
-    assert(iswap.isInstanceOf[IswapByteCode])
+    array += 3
+    array += 2
+    array += 1
+    val addInstruction = new AddInstruction(label,opCode, array)
+    addInstruction.execute(machine)
 
-
-
-
+    assert(machine.regs(3) == 15)
   }
 
 
