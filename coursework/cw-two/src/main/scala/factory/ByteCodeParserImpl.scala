@@ -19,7 +19,7 @@ class ByteCodeParserImpl extends ByteCodeParser{
     */
   override def parse(bc: Vector[Byte]): Vector[ByteCode] = {
 
-    //initalise vector of bytecodes which will be returned
+    //Initialise vector of ByteCode which will be returned
     var byteCodeVector : Vector[ByteCode] = Vector[ByteCode]()
 
     var isIconst = false //boolean checks whether byte is iconst
