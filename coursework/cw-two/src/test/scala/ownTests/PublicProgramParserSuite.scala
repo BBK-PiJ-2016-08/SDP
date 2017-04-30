@@ -37,7 +37,8 @@ class PublicProgramParserSuite extends FunSuite {
     val instruction4 = new Instruction("print" , intVector)
 
 
-    val iList : ppi.InstructionList = ppi.parse("/Users/jakeholdom/Programming/Scala/SDP/Coursework/cw-two/src/test/scala/ownTests/p01.vm")
+    //val iList : ppi.InstructionList = ppi.parse("/Users/jakeholdom/Programming/Scala/SDP/Coursework/cw-two/src/test/scala/ownTests/p01.vm")
+    val iList : ppi.InstructionList = ppi.parse("C:\\Users\\Eric\\Documents\\SDP\\Coursework\\cw-two\\src\\test\\scala\\ownTests\\p01.vm")
 
     assert(iList.length == 4)
     assert(iList(0).name == instruction1.name)
@@ -48,9 +49,5 @@ class PublicProgramParserSuite extends FunSuite {
     assert(iList(2).args == instruction3.args)
     assert(iList(3).name == instruction4.name)
     assert(iList(3).args == instruction4.args)
-
   }
-
-
-
 }
