@@ -1,10 +1,8 @@
 package factory
 
 import bc.{ByteCodeFactory, ByteCodeParser}
-// import sun.tools.asm.Instruction / Optimized import just to make the sbt test pass
+import vm._
 import vendor.{ProgramParser, ProgramParserImpl}
-import vm.{VirtualMachine, VirtualMachineParser}
-import factory.ByteCodeParserImpl
 
 /**
   * The `VirtualMachineFactory` follows the *factory pattern*. It provides
@@ -17,12 +15,9 @@ object VirtualMachineFactory {
 
   def vendorParser: ProgramParser = new ProgramParserImpl //return new instance
 
-
   def byteCodeParser: ByteCodeParser = new ByteCodeParserImpl
 
-  // TODO
-  def virtualMachineParser: VirtualMachineParser = ???
+  def virtualMachineParser: VirtualMachineParser = new VirtualMachineParserImpl
 
-  // TODO
-  def virtualMachine: VirtualMachine = ???
+  def virtualMachine: VirtualMachine = new VirtualMachineImpl
 }
