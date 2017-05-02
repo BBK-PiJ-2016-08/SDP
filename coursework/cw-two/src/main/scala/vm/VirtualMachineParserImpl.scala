@@ -1,13 +1,13 @@
 package vm
 
-import bc.ByteCode
+import bc.{ByteCode, ByteCodeParser, ByteCodeValues}
 import factory.ByteCodeParserImpl
 import vendor.{Instruction, ProgramParserImpl}
 
-class VirtualMachineParserImpl extends VirtualMachineParser{
+class VirtualMachineParserImpl extends VirtualMachineParser with ByteCodeValues{
 
   //Initialise instance of factory.
-  var byteCodeFactory = new ByteCodeParserImpl
+  var byteCodeParser = new ByteCodeParserImpl
 
   /**
     * Returns a vector of [[bc.ByteCode]].
@@ -51,19 +51,19 @@ class VirtualMachineParserImpl extends VirtualMachineParser{
     */
   override def parseString(str: String): Vector[ByteCode] = {
     var byteCodes = Vector[ByteCode]()
-    val fields = str.split("")
+    val fields = str.split("\n")
 
     if (fields.nonEmpty) {
       for (field <- fields){
         val fieldOne = field
-        val fieldTwo: Vector[ByteCode] = Vector[ByteCode]()
-        if(field.contains("")){
+        if(field.contains(" ")){
+
           val multipleString = field.split(" ")
-          val fieldOne = multipleString(0)
-          fieldTwo = fieldTwo :+ multipleString(fields).toByte
-          byteCodes = byteCodes :+ new ByteCode(Vector(fieldOne,fieldTwo))
+          val fieldOne = bytecode(multipleString(0))
+          val fieldTwo = multipleString(1).toByte
+          byteCodes ++= byteCodeParser.parse(Vector(fieldOne,fieldTwo))
         } else {
-          byteCodes = byteCodes :+ new ByteCode(fieldOne,fieldTwo)
+          byteCodes ++= byteCodeParser.parse(Vector(bytecode(fieldOne)))
 
         }
 
