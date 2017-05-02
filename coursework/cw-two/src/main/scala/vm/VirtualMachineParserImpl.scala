@@ -55,23 +55,36 @@ class VirtualMachineParserImpl extends VirtualMachineParser with ByteCodeValues{
     var byteCodes = Vector[ByteCode]()
     val fields = str.split("\n")
 
-    if (fields.nonEmpty) {
-      for (field <- fields){
-        val fieldOne = field
-        if(field.contains(" ")){
+      if (fields.nonEmpty) {
+        for (field <- fields) {
+          val fieldOne = field
+          if (field.contains(" ")) {
 
-          val multipleString = field.split(" ")
-          val fieldOne = bytecode(multipleString(0))
-          val fieldTwo = multipleString(1).toByte
-          byteCodes ++= byteCodeParser.parse(Vector(fieldOne,fieldTwo))
-        } else {
-          byteCodes ++= byteCodeParser.parse(Vector(bytecode(fieldOne)))
+            val multipleString = field.split(" ")
+            val fieldOne = bytecode(multipleString(0))
+            val fieldTwo = multipleString(1).toByte
+            if(validateByteCode(multipleString(0)) && multipleString(1).toInt > 0){
+
+              byteCodes ++= byteCodeParser.parse(Vector(fieldOne, fieldTwo))
+
+            }else{
+              throw new bc.InvalidBytecodeException("Error: Invalid byte code")
+            }
+          } else {
+            if (validateByteCode(field)) {
+              byteCodes ++= byteCodeParser.parse(Vector(bytecode(fieldOne)))
+            }else{
+              throw new bc.InvalidBytecodeException("Error: Invalid byte code")
+            }
+
+          }
 
         }
 
       }
-
-    }
     byteCodes
   }
+
+  def validateByteCode(field:String): Boolean = bytecode.contains(field)
+
 }
