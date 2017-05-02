@@ -1,6 +1,6 @@
 package vm
 
-import bc.{ByteCode, ByteCodeParser, ByteCodeValues}
+import bc.{ByteCode, ByteCodeValues}
 import factory.ByteCodeParserImpl
 import vendor.{Instruction, ProgramParserImpl}
 
@@ -22,6 +22,7 @@ class VirtualMachineParserImpl extends VirtualMachineParser with ByteCodeValues{
   @throws(classOf[NoSuchElementException])
   @throws(classOf[NumberFormatException])
   @throws(classOf[ArrayIndexOutOfBoundsException])
+  @throws(classOf[bc.InvalidBytecodeException])
   override def parse(file: String): Vector[ByteCode] = {
     val programParser = new ProgramParserImpl()
     val instructionVector: Vector[Instruction] = programParser.parse(file)
@@ -49,6 +50,7 @@ class VirtualMachineParserImpl extends VirtualMachineParser with ByteCodeValues{
     * @param str a string containing a program
     * @return a vector of bytecodes
     */
+  @throws(classOf[bc.InvalidBytecodeException])
   override def parseString(str: String): Vector[ByteCode] = {
     var byteCodes = Vector[ByteCode]()
     val fields = str.split("\n")
