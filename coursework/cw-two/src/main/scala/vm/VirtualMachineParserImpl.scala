@@ -27,9 +27,11 @@ class VirtualMachineParserImpl extends VirtualMachineParser with ByteCodeValues{
 
     for (instruction <- instructionVector) {
       var instructionString = instruction.name
+      //Check whether the instruction file to parse is empty or not
       if (instruction.args.nonEmpty) {
         instructionString += " " + instruction.args.head.toString
       }
+      //appends the Instruction onto the vector of byte codes
       ByteCodeVector = ByteCodeVector ++: parseString(instructionString)
     }
     ByteCodeVector
@@ -50,7 +52,7 @@ class VirtualMachineParserImpl extends VirtualMachineParser with ByteCodeValues{
     var byteCodes = Vector[ByteCode]()
     val fields = str.split("\n")
 
-    //Check whether the file to parse is empty
+    //Check whether the file to parse is empty or not
     if (fields.nonEmpty) {
       for (field <- fields) { // Loop through all the fields of the file
         val fieldOne = field
