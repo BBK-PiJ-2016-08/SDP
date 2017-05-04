@@ -7,5 +7,8 @@ import java.rmi.RemoteException
   */
 
 trait ReportGenerator extends Remote {
+  @throws(classOf[RemoteException])
   def generateDailyReport(): String
+
+
 }

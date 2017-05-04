@@ -2,6 +2,7 @@ package main.scala.proxy.remoteproxy
 
 import java.rmi.Naming
 import java.rmi.RemoteException
+import java.rmi.registry.{LocateRegistry, Registry}
 import java.rmi.server.UnicastRemoteObject
 import java.util.Date
 /**
@@ -11,9 +12,11 @@ import java.util.Date
 object ReportGeneratorImpl extends App {
   try {
     val reportGenerator: ReportGenerator = new ReportGeneratorImpl()
-    Naming.rebind("PizzaCoRemoteGenerator", reportGenerator)
+    val registry: Registry = LocateRegistry.createRegistry(44444)
+    registry.rebind("PizzaCoRemoteGenerator", reportGenerator)
   } catch {
     case e: Exception => e.printStackTrace()
+
   }
 }
 

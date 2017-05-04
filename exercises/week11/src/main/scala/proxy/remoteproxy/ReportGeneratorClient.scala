@@ -18,7 +18,7 @@ class ReportGeneratorClient {
   def generateReport(): Unit = {
     try {
       val reportGenerator: ReportGenerator = Naming
-        .lookup("rmi://127.0.0.1/PizzaCoRemoteGenerator")
+        .lookup("rmi://127.0.0.1:44444/PizzaCoRemoteGenerator")
         .asInstanceOf[ReportGenerator]
       println("Generate report being called")
       println(reportGenerator.generateDailyReport())
