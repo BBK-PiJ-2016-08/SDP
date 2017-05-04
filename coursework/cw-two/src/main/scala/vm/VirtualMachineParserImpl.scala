@@ -86,6 +86,13 @@ class VirtualMachineParserImpl extends VirtualMachineParser with ByteCodeValues{
     byteCodes
   }
 
+  /**
+    * Checks whether the field is a valid bytecode field and returns a boolean
+    * of the result.
+    *
+    * @param field string value of the field
+    * @return boolean whether the bytecode is valid
+    */
   def validateByteCode(field:String): Boolean = bytecode.contains(field)
 
 }
