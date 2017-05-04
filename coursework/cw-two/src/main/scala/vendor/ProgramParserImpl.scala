@@ -8,7 +8,7 @@ import scala.io.Source
 class ProgramParserImpl extends ProgramParser {
   override type InstructionList = Vector[Instruction]
 
-  def instructionList(instruction: Instruction*) = Vector(instruction: _*)
+  def instructionList(instruction: Instruction*): Vector[Instruction] = Vector(instruction: _*)
 
   /**
     * Parses a file representation of a bytecode program
