@@ -1,8 +1,5 @@
 package vendor
 
-import com.sun.org.apache.bcel.internal.generic.InstructionList
-import vendor.{Instruction, ProgramParser}
-
 import scala.io.Source
 
 /**
